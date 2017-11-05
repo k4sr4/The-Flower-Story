@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 public class Spawner : MonoBehaviour {
 
     public GameObject[] groups;
+    public GameObject nextBlock;
+    private int choice;
 
     GameObject current;
 
 	// Use this for initialization
 	void Start () {
+        choice = Random.Range(0, groups.Length);
+
         Invoke("SpawnNext", 1.5f);            
     }
 	
@@ -23,8 +27,9 @@ public class Spawner : MonoBehaviour {
 
     public void SpawnNext()
     {                
-        int choice = Random.Range(0, groups.Length);
-        current = Instantiate(groups[choice], transform);        
+        current = Instantiate(groups[choice], transform);
+        choice = Random.Range(0, groups.Length);
+        nextBlock.GetComponent<SpriteRenderer>().sprite = groups[choice].GetComponent<SpriteRenderer>().sprite;
     }
 
     public void ActivateBomb()

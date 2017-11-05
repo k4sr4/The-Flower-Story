@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1bb9fee15e5c54747be1242d85294618
-timeCreated: 1508302804
+timeCreated: 1509920400
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,7 @@ TextureImporter:
     21300006: tetrise basic_3
     21300008: tetrise basic_4
     21300010: tetrise basic_5
+    21300012: tetrise basic_6
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -165,6 +166,20 @@ TextureImporter:
       name: tetrise basic_3
       rect:
         serializedVersion: 2
+        x: 1512
+        y: 454
+        width: 268
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tetrise basic_4
+      rect:
+        serializedVersion: 2
         x: 32
         y: 135
         width: 399
@@ -176,7 +191,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tetrise basic_4
+      name: tetrise basic_5
       rect:
         serializedVersion: 2
         x: 621
@@ -190,13 +205,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tetrise basic_5
+      name: tetrise basic_6
       rect:
         serializedVersion: 2
-        x: 1004
-        y: 83
-        width: 401
-        height: 268
+        x: 1032
+        y: 66
+        width: 399
+        height: 266
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

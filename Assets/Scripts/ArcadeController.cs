@@ -10,6 +10,8 @@ public class ArcadeController : MonoBehaviour {
     public Text pointsText;
     public int numGoalsToClear = 10;
     public GameObject[] items;
+    public GameObject[] backgrounds;
+    public GameObject[] bars;
     int points = 0;
     int clearPoints = 0;
     float itemSpawnTime = 0f;
@@ -19,13 +21,59 @@ public class ArcadeController : MonoBehaviour {
 	void Start () {
         itemSpawnTime = Random.Range(20f, 30f);
         Invoke("SpawnItem", itemSpawnTime);
+
+        int background = Random.Range(0, backgrounds.Length);
+        Instantiate(backgrounds[background]);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (clearPoints < numGoalsToClear)
+        {
+            if (clearPoints != 0)
+            {
+                if (clearPoints % numGoalsToClear != 0)
+                {
+                    int barNum = (clearPoints % numGoalsToClear) - 1;
+                    bars[barNum].SetActive(true);
+
+                    if (barNum != 0)
+                    {
+                        while (!bars[barNum - 1].activeInHierarchy)
+                        {
+                            bars[barNum - 1].SetActive(true);
+
+                            if(barNum != 0)
+                                barNum--;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (GameObject bar in bars)
+                    {
+                        bar.SetActive(false);
+                    }
+
+                    bars[bars.Length - 1].SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            foreach (GameObject bar in bars)
+            {
+                bar.SetActive(false);
+            }
+
+            bars[bars.Length - 1].SetActive(true);
+        }
+
         if (clearPoints >= numGoalsToClear && Input.GetKey(KeyCode.Return))
         {
             clearPoints = 0;
+
+            bars[bars.Length - 1].SetActive(false);
 
             Group[] blocks = FindObjectsOfType<Group>();
 

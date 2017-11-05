@@ -235,6 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ArcadeController.cs" />
+    <Compile Include="Assets\Scripts\BarAnimation.cs" />
     <Compile Include="Assets\Scripts\BlockScript.cs" />
     <Compile Include="Assets\Scripts\GoalScript.cs" />
     <Compile Include="Assets\Scripts\Grid.cs" />

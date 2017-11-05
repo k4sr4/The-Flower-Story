@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d93fbd2e7a8562a48950db420d8b49be
-timeCreated: 1508217270
+timeCreated: 1509921577
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -9,6 +9,8 @@ TextureImporter:
     21300004: tetris snow_2
     21300006: tetris snow_3
     21300008: tetris snow_4
+    21300010: tetris snow_5
+    21300012: tetris snow_6
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -122,10 +124,10 @@ TextureImporter:
       name: tetris snow_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 833
-        width: 532
-        height: 133
+        x: 47
+        y: 500
+        width: 266
+        height: 266
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,6 +136,20 @@ TextureImporter:
       tessellationDetail: 0
     - serializedVersion: 2
       name: tetris snow_1
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 432
+        width: 133
+        height: 532
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tetris snow_2
       rect:
         serializedVersion: 2
         x: 589
@@ -147,25 +163,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tetris snow_2
-      rect:
-        serializedVersion: 2
-        x: 47
-        y: 500
-        width: 266
-        height: 266
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: tetris snow_3
       rect:
         serializedVersion: 2
-        x: 621
-        y: 152
+        x: 1122
+        y: 495
         width: 266
         height: 399
       alignment: 0
@@ -180,6 +182,34 @@ TextureImporter:
         serializedVersion: 2
         x: 32
         y: 135
+        width: 399
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tetris snow_5
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 152
+        width: 266
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tetris snow_6
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 159
         width: 399
         height: 266
       alignment: 0

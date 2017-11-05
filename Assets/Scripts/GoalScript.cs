@@ -11,11 +11,11 @@ public class GoalScript : MonoBehaviour {
     {
         if (SceneManager.GetActiveScene().name != "Arcade")
         {
-            GetComponent<SpriteRenderer>().enabled = true;
             this.enabled = false;
         }
         else
         {
+            GetComponent<SpriteRenderer>().enabled = false;
             StartCoroutine("Count");
         }
     }
