@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +20,15 @@ public class PlatformerCharacter2D : MonoBehaviour
     private Animator m_Anim;            // Reference to the player's animator component.
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+    private bool canInstantiateGoal = true;
+    private bool canAddPoints = true;
+
+    // For arcade
+    bool jetpack = false;
+    bool laser = false;
+    bool hammer = false;
+    bool bomb = false;
+    bool teleporter = false;    
 
     private void Awake()
     {
@@ -39,6 +50,12 @@ public class PlatformerCharacter2D : MonoBehaviour
         {
             transform.position = new Vector2(12.6f, transform.position.y);
         }
+
+        // Y position fix after falling
+        if(transform.position.y < .5f)
+        {
+            transform.position = new Vector2(transform.position.x, .62f);
+        }
     }
 
 
@@ -58,6 +75,49 @@ public class PlatformerCharacter2D : MonoBehaviour
 
         // Set the vertical animation
         m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (jetpack)
+            {
+                m_Grounded = false;
+                m_Anim.SetBool("Ground", false);
+                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce * 2.5f));
+                jetpack = false;
+            }
+
+            if (laser)
+            {
+                int row = (int)Math.Ceiling(transform.position.y);
+                Grid.deleteOneRow(row);
+                laser = false;
+            }
+
+            if (hammer && (int)Math.Floor(transform.position.y) != 0)
+            {
+                int gridX = (int)Math.Round(transform.position.x);
+                int gridY = (int)Math.Floor(transform.position.y) - 1;
+                Grid.deleteBlock(gridX, gridY);
+                hammer = false;
+            }
+
+            if (bomb)
+            {
+                FindObjectOfType<Spawner>().ActivateBomb();
+                bomb = false;
+            }
+
+            if (teleporter)
+            {
+                do
+                {
+                    Vector2 newPos = new Vector2(UnityEngine.Random.Range(0f, 12f), UnityEngine.Random.Range(1f, 17f));
+                    transform.position = newPos;
+                }
+                while (Physics2D.OverlapCircle(transform.position, .6f).tag == "Block");
+                teleporter = false;
+            }
+        }
     }
 
 
@@ -128,6 +188,69 @@ public class PlatformerCharacter2D : MonoBehaviour
         if (other.tag == "Goal")
         {
             Destroy(other.gameObject);
+
+            if (SceneManager.GetActiveScene().name == "Arcade")
+            {
+                canInstantiateGoal = true;
+
+                if (canAddPoints)
+                {
+                    canAddPoints = false;
+                    FindObjectOfType<ArcadeController>().AddPoints(other.GetComponent<GoalScript>().points);
+                }
+
+                Invoke("WaitAndSpawn", .1f);
+            }
+        }
+
+        if(other.tag == "Jetpack")
+        {
+            Destroy(other.gameObject);
+            jetpack = true;
+            laser = false;
+            hammer = false;
+        }
+
+        if (other.tag == "Laser")
+        {
+            Destroy(other.gameObject);
+            laser = true;
+            jetpack = false;
+            hammer = false;
+        }
+
+        if (other.tag == "Hammer")
+        {
+            Destroy(other.gameObject);
+            hammer = true;
+            laser = false;
+            jetpack = false;
+        }
+
+        if (other.tag == "Bomb")
+        {
+            Destroy(other.gameObject);
+            bomb = true;
+            laser = false;
+            jetpack = false;
+        }
+
+        if (other.tag == "Teleporter")
+        {
+            Destroy(other.gameObject);
+            teleporter = true;
+            laser = false;
+            jetpack = false;
+        }
+    }
+
+    void WaitAndSpawn()
+    {
+        if (SceneManager.GetActiveScene().name == "Arcade" && canInstantiateGoal)
+        {
+            canInstantiateGoal = false;
+            FindObjectOfType<ArcadeController>().InstantiateFlower();
+            canAddPoints = true;
         }
     }
 }

@@ -106,7 +106,7 @@ public class Group : MonoBehaviour {
                 Grid.deleteFullRows();
 
                 // Spawn next Group
-                FindObjectOfType<Spawner>().spawnNext();
+                FindObjectOfType<Spawner>().SpawnNext();
 
                 // Disable script
                 enabled = false;

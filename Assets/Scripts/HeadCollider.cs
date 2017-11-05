@@ -9,9 +9,6 @@ public class HeadCollider : MonoBehaviour {
     {
         if (other.tag == "Block" && other.GetComponentInParent<Group>().enabled)
         {
-            // It's not valid. revert.
-            //other.GetComponentInParent<Transform>().position += new Vector3(0, 1, 0);
-
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

@@ -25,8 +25,11 @@ public class Grid : MonoBehaviour {
     {
         for (int x = 0; x < w; ++x)
         {
-            Destroy(grid[x, y].gameObject);
-            grid[x, y] = null;
+            if (grid[x, y] != null)
+            {
+                Destroy(grid[x, y].gameObject);
+                grid[x, y] = null;
+            }
         }
     }
 
@@ -70,6 +73,21 @@ public class Grid : MonoBehaviour {
                 decreaseRowsAbove(y + 1);
                 --y;
             }
+        }
+    }
+
+    public static void deleteOneRow(int row)
+    {
+        deleteRow(row - 1);
+        decreaseRowsAbove(row);
+    }
+
+    public static void deleteBlock(int x, int y)
+    {
+        if (grid[x, y] != null)
+        {
+            Destroy(grid[x, y].gameObject);
+            grid[x, y] = null;
         }
     }
 }

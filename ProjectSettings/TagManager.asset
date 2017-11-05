@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Block
   - Goal
+  - Jetpack
+  - Laser
+  - Hammer
+  - Bomb
+  - Teleporter
   layers:
   - Default
   - TransparentFX
@@ -40,6 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 4265149475
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

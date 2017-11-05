@@ -7,9 +7,11 @@ public class Spawner : MonoBehaviour {
 
     public GameObject[] groups;
 
+    GameObject current;
+
 	// Use this for initialization
 	void Start () {
-        StartCoroutine("WaitAndSpawn");               
+        Invoke("SpawnNext", 1.5f);            
     }
 	
 	// Update is called once per frame
@@ -19,15 +21,15 @@ public class Spawner : MonoBehaviour {
         }
 	}
 
-    public void spawnNext()
+    public void SpawnNext()
     {                
         int choice = Random.Range(0, groups.Length);
-        Instantiate(groups[choice], transform);        
+        current = Instantiate(groups[choice], transform);        
     }
 
-    IEnumerator WaitAndSpawn()
+    public void ActivateBomb()
     {
-        yield return new WaitForSeconds(1.5f);
-        spawnNext();
+        Destroy(current);
+        Invoke("SpawnNext", 1.5f);
     }
 }
