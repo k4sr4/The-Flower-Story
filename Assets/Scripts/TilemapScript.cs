@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TilemapScript : MonoBehaviour {
-
-    public BoundsInt area;
-
     void Start()
     {
         for (int y = -1; y < Grid.h + 1; ++y)
