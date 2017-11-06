@@ -247,6 +247,7 @@
     <Compile Include="Assets\Scripts\PointsScript.cs" />
     <Compile Include="Assets\Scripts\ResolutionFixer.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
+    <Compile Include="Assets\Scripts\TilemapScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
