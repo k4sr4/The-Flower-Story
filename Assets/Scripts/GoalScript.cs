@@ -22,7 +22,7 @@ public class GoalScript : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Block" && canHit)
+        if(other.tag == "Block" && canHit && SceneManager.GetActiveScene().name == "Arcade")
         {
             GetComponentInParent<Transform>().position = new Vector2(Random.Range(0f, 12f), Random.Range(0f, 17f));
         }
