@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour {
 
     public GameObject[] groups;
     public GameObject nextBlock;
+    public Sprite[] nextBlockSprites;
     private int choice;
 
     GameObject current;
@@ -29,7 +30,7 @@ public class Spawner : MonoBehaviour {
     {                
         current = Instantiate(groups[choice], transform);
         choice = Random.Range(0, groups.Length);
-        nextBlock.GetComponent<SpriteRenderer>().sprite = groups[choice].GetComponent<SpriteRenderer>().sprite;
+        nextBlock.GetComponent<SpriteRenderer>().sprite = nextBlockSprites[choice];
     }
 
     public void ActivateBomb()

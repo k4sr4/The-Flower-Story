@@ -29,6 +29,8 @@ public class Grid : MonoBehaviour {
             {
                 Destroy(grid[x, y].gameObject);
                 grid[x, y] = null;
+
+                FindObjectOfType<TilemapScript>().DeleteTile(x - 1, y - 1);
             }
         }
     }
